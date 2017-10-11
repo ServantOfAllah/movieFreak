@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Shows</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="slide-div airing-today">
+    <p class="airing-today-title">Airing Today</p>
+    <ion-slides #imgSlides loop="true" class="image-slider" slidesPerView='2'>
+      <ion-slide class="sliding-img" *ngFor="let img of seriesArr" >
+        <ion-card (click)="navToShow(img)">
+          <img [src]="imgConfigPath+img.poster_path" />
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="popular-div">
+    <p class="popular-shows-title">- Popular Shows</p>
+    <ion-slides slidesPerView='3'>
+      <ion-slide *ngFor="let img of popularShowsArr">
+        <ion-card class="populer-card">
+          <img [src]="imgConfigPath+img.poster_path" />
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="toprated-div">
+      <p class="toprated-shows-title">- Top Rated</p>
+      <ion-slides slidesPerView='3'>
+        <ion-slide *ngFor="let img of topRatedArr">
+          <ion-card class="populer-card">
+            <img [src]="imgConfigPath+img.poster_path" />
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title *ngFor="let title of tvdetails">{{title.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="bgimg-div">
+
+  </div>
+
+  <ion-list class="show-list">
+    <div *ngFor="let img of tvdetails" class="img-div">
+      <img class="show-img" [src]="fullImagePath+img.poster_path" />
+    </div>
+    <ion-item text-wrap *ngFor="let title of tvdetails">
+      <h2 class="show-title">{{title.name}}</h2>
+      <p [innerHTML]="title.overview"></p>
+    </ion-item>
+  </ion-list>
+</ion-content>

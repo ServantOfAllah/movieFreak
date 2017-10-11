@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  navToSeries(){
+    this.navCtrl.push('TvshowsPage');
+  }
+
 }

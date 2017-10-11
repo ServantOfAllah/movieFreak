@@ -1,0 +1,31 @@
+page-tvpage {
+    .img-div{
+        // width:30%;
+        // padding-left: 16px; 
+        // left: 0px;
+        // top: 0px;
+    }
+    .bgimg-div{
+        background-color: #ee6e73;
+        width: 500px;
+        height: 200px;
+        position: relative;
+    }
+    .show-img{
+        position: absolute;
+        width:25%;
+        top: 20%;
+        left: 15px;
+        border-radius: 7px;
+        box-shadow: 3px 3px 10px 1px #2d2d2d;
+    }
+    .show-list{
+        padding-top: 18%;
+        // position: relative;
+    }
+    .show-title{
+        font-weight: 500;
+        color: #202020;
+        padding-bottom: 8px;
+    }
+}
