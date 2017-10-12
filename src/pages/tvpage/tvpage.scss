@@ -1,18 +1,21 @@
 page-tvpage {
+    .sliding-img {
+        top: 0;
+        left: -25%;
+    }
     .img-div {
         padding: 0;
-        position: absolute;
-        top: -15vh;
+        //position: absolute;
+        //top: -15vh;
     }
-    .bgimg-div {
-        background-color: #ee6e73;
-        width: auto;
-        height: 30vh;
+    .bg-img {
+        height: 50vh;
+        width: 100%;
     }
-    .info-grid{
+    .info-grid {
         padding: 0 5px 0 15px;
     }
-    .img-col{
+    .img-col {
         padding: 0;
     }
     .show-img {
@@ -21,17 +24,43 @@ page-tvpage {
         box-shadow: 3px 3px 10px 1px #2d2d2d;
     }
     .show-list {
-        margin: 7vh 0 0 0;
+        //margin: 7vh 0 0 0;
     }
-    .show-title{
+    .show-title {
         font-weight: 500;
         color: #202020;
         padding-bottom: 8px;
+    }
+    .show-p {
+        font-weight: 500;
+        color: #202020;
+        font-size: 1.1em;
+        margin: 0;
+        padding-left: 16px;
+    }
+    .show-year {
+        font-weight: 500;
+        color: #202020;
+        //display: inline;
+        margin-top: 5px;
+        padding-left: 8px;
     }
     .bg-grid {
         padding: 0;
     }
     .rate-btn {
         border-radius: 10px;
+        display: block;
+    }
+    .cal-icon {
+        font-size: 2em;
+        padding: 5px 0 0 10px;
+    }
+    .dark_bg {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 50vh;
     }
 }

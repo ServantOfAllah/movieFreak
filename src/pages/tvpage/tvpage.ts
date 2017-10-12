@@ -48,7 +48,7 @@ export class TvpagePage {
   }
 
   getPostalImage(){
-    this.fullImagePath = this.allImgSizes.base_url + this.allImgSizes.profile_sizes[2];
+    this.fullImagePath = this.allImgSizes.base_url + this.allImgSizes.profile_sizes[3];
     console.log("full image path", this.fullImagePath);
   }
   getTvImages(){

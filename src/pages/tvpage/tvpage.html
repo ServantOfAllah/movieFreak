@@ -11,9 +11,9 @@
 <ion-content>
     <ion-grid class="bg-grid">
         <ion-row>
-            <ion-col col-12 col-sm-12 col-md-12 class="bg-grid">
-                <div class="bgimg-div">
-                </div>
+            <ion-col col-12 col-sm-12 col-md-12 class="bg-grid" *ngFor="let img of tvdetails">
+                <img class="bg-img" [src]="fullImagePath + img.poster_path" />
+                <div class="dark_bg"></div>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -25,13 +25,15 @@
                     <img class="show-img" [src]="fullImagePath + img.poster_path" />
                 </div>
             </ion-col>
-            <ion-col col-4>
+            <ion-col col-5>
                 <button class="rate-btn" ion-button icon-start>
-            <ion-icon name="star" color="rating"></ion-icon>
-                {{img.vote_average}}
-            </button>
+                    <ion-icon name="star" color="rating"></ion-icon>
+                    {{img.vote_average}}
+                </button>
+                <ion-icon class="cal-icon" name="calendar" color="primary"></ion-icon>
+                <p class="show-year">{{img.first_air_date}}</p>
             </ion-col>
-            <ion-col col-4>
+            <ion-col col-3>
 
             </ion-col>
         </ion-row>
@@ -43,8 +45,9 @@
             <p [innerHTML]="title.overview"></p>
         </ion-item>
     </ion-list>
-    
+
     <div>
+        <h2 class="show-p">Photos</h2>
         <ion-slides slidesPerView='2'>
             <ion-slide class="sliding-img" *ngFor="let img of tvImageArr">
                 <ion-card>
