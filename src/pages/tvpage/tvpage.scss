@@ -1,28 +1,29 @@
 page-tvpage {
     .img-div {
-        // width:30%;
-        // padding-left: 16px; 
-        // left: 0px;
-        // top: 0px;
+        padding: 0;
+        position: absolute;
+        top: -15vh;
     }
     .bgimg-div {
         background-color: #ee6e73;
         width: auto;
-        height: 250px;
-        //position: relative;
+        height: 30vh;
+    }
+    .info-grid{
+        padding: 0 5px 0 15px;
+    }
+    .img-col{
+        padding: 0;
     }
     .show-img {
-        //position: absolute;
         width: auto;
-        // top: 25%;
-        // left: 15px;
         border-radius: 7px;
         box-shadow: 3px 3px 10px 1px #2d2d2d;
     }
     .show-list {
-        //margin-top: 25%;
+        margin: 7vh 0 0 0;
     }
-    .show-title {
+    .show-title{
         font-weight: 500;
         color: #202020;
         padding-bottom: 8px;
@@ -31,11 +32,6 @@ page-tvpage {
         padding: 0;
     }
     .rate-btn {
-        // position: absolute;
-        // top: 25%;
-        // left: 20%;
-        // border-radius: 10px;
-        //position: absolute;
         border-radius: 10px;
     }
 }
