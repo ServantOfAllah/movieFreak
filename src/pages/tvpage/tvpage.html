@@ -1,60 +1,125 @@
-<ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle>
+<ion-split-pane>
+    <ion-header>
+        <ion-navbar color="primary">
+            <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title *ngFor="let title of tvdetails">{{title.name}}</ion-title>
-    </ion-navbar>
-</ion-header>
+            <ion-title *ngFor="let title of tvdetails">{{title.name}}</ion-title>
+        </ion-navbar>
+    </ion-header>
 
 
-<ion-content>
-    <ion-grid class="bg-grid">
-        <ion-row>
-            <ion-col col-12 col-sm-12 col-md-12 class="bg-grid" *ngFor="let img of tvdetails">
-                <img class="bg-img" [src]="fullImagePath + img.poster_path" />
-                <div class="dark_bg"></div>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-content>
+        <ion-grid class="bg-grid">
+            <ion-row>
+                <ion-col col-12 col-sm-12 col-md-12 class="bg-grid" *ngFor="let img of tvdetails">
+                    <img class="bg-img" [src]="fullImagePath + img.poster_path" alt="Photo" />
+                    <div class="dark_bg"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-    <ion-grid class="info-grid">
-        <ion-row *ngFor="let img of tvdetails">
-            <ion-col col-4 class="img-col">
-                <div class="img-div">
-                    <img class="show-img" [src]="fullImagePath + img.poster_path" />
-                </div>
-            </ion-col>
-            <ion-col col-5>
-                <button class="rate-btn" ion-button icon-start>
+        <ion-grid class="info-grid">
+            <ion-row *ngFor="let img of tvdetails">
+                <ion-col col-4 class="img-col">
+                    <div class="img-div">
+                        <img class="show-img" [src]="fullImagePath + img.poster_path" alt="Photo" />
+                    </div>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-row>
+                        <button class="rate-btn" ion-button icon-start>
                     <ion-icon name="star" color="rating"></ion-icon>
                     {{img.vote_average}}
                 </button>
-                <ion-icon class="cal-icon" name="calendar" color="primary"></ion-icon>
-                <p class="show-year">{{img.first_air_date}}</p>
-            </ion-col>
-            <ion-col col-3>
+                    </ion-row>
+                    <ion-row>
+                        <ion-icon class="cal-icon cal-span" name="calendar" color="primary"></ion-icon>
+                        <p class="show-year">{{img.first_air_date}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <ion-icon class="cal-icon" name="md-globe" color="primary"></ion-icon>
+                        <ion-chip *ngFor="let genre of showGenre" class="icon-chip" color="danger">
+                            <ion-label>{{genre.name}}</ion-label>
+                        </ion-chip>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <ion-list class="show-list">
+            <ion-item no-lines class="season-item" text-wrap *ngFor="let title of tvdetails">
+                <h2 class="show-title">{{title.name}}</h2>
+                <p class="overview" [innerHTML]="title.overview"></p>
+            </ion-item>
+            <ion-item no-lines class="season-item" *ngFor="let info of allTvDetailsArr">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-8>
+                            <h4>Number of seasons:</h4>
+                        </ion-col>
+                        <ion-col col-2>
+                            <h4>{{info.number_of_seasons}}</h4>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-8>
+                            <h4>Number of episodes:</h4>
+                        </ion-col>
+                        <ion-col col-2>
+                            <h4>{{info.number_of_episodes}}</h4>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-8>
+                            <h4>Running</h4>
+                        </ion-col>
+                        <ion-col col-2>
+                            <h4>{{info.in_production}}</h4>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
 
-    <ion-list class="show-list">
-        <ion-item text-wrap *ngFor="let title of tvdetails">
-            <h2 class="show-title">{{title.name}}</h2>
-            <p [innerHTML]="title.overview"></p>
-        </ion-item>
-    </ion-list>
+        <div class="photos">
+            <h2 class="show-p">Photos</h2>
+            <ion-slides slidesPerView='2'>
+                <ion-slide class="sliding-img" *ngFor="let img of tvImageArr">
+                    <ion-card>
+                        <img [src]="fullImagePath + img.file_path" alt="Photo" />
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </div>
 
-    <div>
-        <h2 class="show-p">Photos</h2>
-        <ion-slides slidesPerView='2'>
-            <ion-slide class="sliding-img" *ngFor="let img of tvImageArr">
-                <ion-card>
-                    <img [src]="fullImagePath + img.file_path" />
-                </ion-card>
-            </ion-slide>
-        </ion-slides>
-    </div>
+        <!-- recommend div -->
+        <div class="recommend-div">
+            <h2 class="show-p">Recommendations</h2>
+            <ion-slides class="sliding-img" slidesPerView='2'>
+                <ion-slide *ngFor="let img of tvRecomArr">
+                    <ion-card (click)="navToShow(img)">
+                        <img [src]="fullImagePath + img.backdrop_path" alt="Photo" />
+                        <ion-card-content class="rec-name">
+                            <p class=rec-name>{{img.name}}</p>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </div>
 
-</ion-content>
+        <!-- producer div -->
+        <!-- <div class="producers">
+        <h2 class="show-p">Creators</h2>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12 *ngFor="let img of allTvDetailsArrCreator">
+                    <img [src]="fullImagePathSmall + img.profile_path" alt="no image" />
+                    <p class="ion_content prod-p">{{img.name}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div> -->
+
+    </ion-content>
+</ion-split-pane>

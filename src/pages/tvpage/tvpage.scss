@@ -15,6 +15,12 @@ page-tvpage {
     .info-grid {
         padding: 0 5px 0 15px;
     }
+    .season-item {
+        background-color: #303030;
+    }
+    .season-item h4 {
+        color: #FFFFFF;
+    }
     .img-col {
         padding: 0;
     }
@@ -24,11 +30,15 @@ page-tvpage {
         box-shadow: 3px 3px 10px 1px #2d2d2d;
     }
     .show-list {
-        //margin: 7vh 0 0 0;
+        margin-top: 2rem;
+    }
+    .overview {
+        color: #fff;
+        //font-weight: 300
     }
     .show-title {
         font-weight: 500;
-        color: #202020;
+        color: #FFFFFF;
         padding-bottom: 8px;
     }
     .show-p {
@@ -38,12 +48,46 @@ page-tvpage {
         margin: 0;
         padding-left: 16px;
     }
+    .prod-p {
+        font-weight: 300;
+        color: #202020;
+        font-size: 0.8em;
+        margin: 0;
+    }
+    .details {
+        font-weight: 500;
+        color: #FFFFFF;
+        font-size: 1.1em;
+        margin: 0;
+    }
+    .div-details {
+        margin-bottom: 3rem;
+        background-color: #ee6e73;
+        text-align: left;
+    }
     .show-year {
         font-weight: 500;
         color: #202020;
         //display: inline;
         margin-top: 5px;
         padding-left: 8px;
+        padding-top: 6px;
+    }
+    .recommend-div {
+        margin-top: 3rem;
+    }
+    .card p {
+        margin: 0 0 2px;
+        font-size: 1.2rem;
+        font-weight: normal;
+        line-height: 1.6;
+        color: #fff;
+    }
+    .rec-name {
+        background-color: #ee6e73;
+        padding: 5px 0;
+        color: #fff;
+        font-weight: 300;
     }
     .bg-grid {
         padding: 0;
@@ -54,7 +98,15 @@ page-tvpage {
     }
     .cal-icon {
         font-size: 2em;
-        padding: 5px 0 0 10px;
+        padding: 5px 5px 0 10px;
+        display: block;
+    }
+    .cal-span {
+        display: block;
+    }
+    .icon-chip {
+        margin-right: 5px;
+        background-color: #202020;
     }
     .dark_bg {
         background-color: rgba(0, 0, 0, 0.5);
@@ -62,5 +114,8 @@ page-tvpage {
         top: 0;
         width: 100%;
         height: 50vh;
+    }
+    .ion_content {
+        background-color: #ee6e73;
     }
 }
