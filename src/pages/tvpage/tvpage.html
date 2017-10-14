@@ -11,10 +11,10 @@
 
     <ion-content>
         <ion-grid class="bg-grid">
-            <ion-row>
+            <ion-row (click)="watchTrailer()">
                 <ion-col col-12 col-sm-12 col-md-12 class="bg-grid" *ngFor="let img of tvdetails">
                     <img class="bg-img" [src]="fullImagePath + img.poster_path" alt="Photo" />
-                    <div class="dark_bg"></div>
+                    <div class="dark_bg"><ion-icon class="trailer-h" name="logo-youtube" color="danger"></ion-icon></div>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -38,7 +38,7 @@
                         <p class="show-year">{{img.first_air_date}}</p>
                     </ion-row>
                     <ion-row>
-                        <ion-icon class="cal-icon" name="md-globe" color="primary"></ion-icon>
+                        <ion-icon (click)="navToSHowSite()" class="cal-icon" name="md-globe" color="primary"></ion-icon>
                         <ion-chip *ngFor="let genre of showGenre" class="icon-chip" color="danger">
                             <ion-label>{{genre.name}}</ion-label>
                         </ion-chip>
@@ -121,4 +121,5 @@
     </div> -->
 
     </ion-content>
+    
 </ion-split-pane>

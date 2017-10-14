@@ -15,8 +15,10 @@ export class TvshowsPage {
   apiKey: string = '3fcdd7c1998d30710d73c25957e35bfb';
   airingTodayBaseUrl: string = 'https://api.themoviedb.org/3/tv/airing_today?api_key=';
   baseImgUrlConfig: string = 'https://api.themoviedb.org/3/configuration?api_key=';
+  searchUrl: string = 'https://api.themoviedb.org/3/search/tv?page=1&api_key=';
 
   seriesArr = [];
+  searchResults = [];
   imgConfigPath: any;
   firstImgPath: string;
   allImgSizes: any;
@@ -26,6 +28,7 @@ export class TvshowsPage {
 
   topRatedBaseUrl: string = 'https://api.themoviedb.org/3/tv/top_rated?api_key=';
   topRatedArr = [];
+  searchInput: string;
 
 
   constructor(private http: Http, public navCtrl: NavController, public navParams: NavParams) {
@@ -56,6 +59,24 @@ export class TvshowsPage {
       console.log("top rated shows ", this.topRatedArr);
     })
   }
+  getSearch(){
+    this.http.get(this.searchUrl + this.apiKey + '&query=' + this.searchInput).map(res => res.json()).subscribe(data => {
+      this.searchResults = data.results;
+      console.log('serach results ', this.searchResults);
+    })
+  }
+  filterItems(ev: any){
+    this.getSearch();
+    let val = ev.target.value;
+    if(val && val.trim() != ''){
+      this.searchResults = this.searchResults.filter(function(item){
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+  onClear(){
+    this.searchResults = [];
+  }
 
   getImgConfig(){
     this.http.get(this.baseImgUrlConfig+this.apiKey).map(res =>res.json()).subscribe(data => {
@@ -74,6 +95,9 @@ export class TvshowsPage {
   navToShow(details){
     const tvdetails = this.navCtrl.push('TvpagePage', { tvDetails: details, firstImgPath: this.firstImgPath, allSizes: this.allImgSizes })
     console.log(tvdetails);
+  }
+
+  searchItems($event){
   }
 
   ionViewDidLoad() {
