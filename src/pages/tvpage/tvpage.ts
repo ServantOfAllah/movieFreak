@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpModule, Http } from '@angular/http';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import 'rxjs/add/operator/map';
 
 @IonicPage()
@@ -20,6 +22,8 @@ export class TvpagePage {
   allTvDetailsArr = [];
   allTvDetailsArrCreator = [];
   showGenre = [];
+  tvshowVideos = [];
+  tvshowVideo: string;
 
   firstImgPath: string;
   fullImagePathSmall: string;
@@ -27,8 +31,9 @@ export class TvpagePage {
   tvImgsId: string;
   fullImagePath:any;
   eachTvImg: string;
+  tvHomepageUrl: string;
 
-  constructor(private http: Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private iab: InAppBrowser, private youtube: YoutubeVideoPlayer, private http: Http, public navCtrl: NavController, public navParams: NavParams) {
 
     this.getAllLinks();
     this.getImageType();
@@ -56,14 +61,22 @@ export class TvpagePage {
   }
 
   getShowDetails(){
-    this.http.get(this.baseUrl + this.tvImgsId + '?api_key=' + this.apiKey).map(res => res.json())
+    this.http.get(this.baseUrl + this.tvImgsId + '?api_key=' + this.apiKey + '&append_to_response=videos').map(res => res.json())
     .subscribe(data => {
       this.allTvDetailsArr = [data];
       this.allTvDetailsArrCreator = data.created_by;
       this.showGenre = data.genres;
-      console.log('all shoow creators', this.allTvDetailsArrCreator);
-      console.log('all shoow details', this.allTvDetailsArr);
+      this.tvHomepageUrl = data.homepage
+      this.tvshowVideos = data.videos.results;
+      for(var i=0; i < this.tvshowVideos.length; i++){
+        this.tvshowVideo = this.tvshowVideos[i].key;
+      }
+      console.log("trailers", this.tvshowVideo);
+      console.log("home url", this.tvHomepageUrl);
+      console.log('all show creators', this.allTvDetailsArrCreator);
+      console.log('all show details', this.allTvDetailsArr);
       console.log("show genres ",this.showGenre);
+      console.log("show videos ",this.tvshowVideo);
     });
   }
   getImageType(){
@@ -88,6 +101,13 @@ export class TvpagePage {
       console.log("recomended tv shows", this.tvRecomArr);
     })
   }
+  navToSHowSite(){
+    let options: InAppBrowserOptions = {
+      location: 'no',
+      hardwareback: 'yes'
+    }
+    const browser = this.iab.create(this.tvHomepageUrl, '_self', options);
+  }
 
   getTvImages(){
     this.http.get(this.baseUrl + this.tvImgsId + '/images?api_key=' + this.apiKey).map(res => res.json())
@@ -95,6 +115,9 @@ export class TvpagePage {
       this.tvImageArr = data.backdrops;
       console.log("all tv images", this.tvImageArr);
     })
+  }
+  watchTrailer(){
+    this.youtube.openVideo(this.tvshowVideo);
   }
 
   navToShow(details){

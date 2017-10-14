@@ -12,7 +12,7 @@ export class HomePage {
   }
 
   navToSeries(){
-    this.navCtrl.push('TvshowsPage');
+    this.navCtrl.setRoot('TvshowsPage');
   }
 
 }
