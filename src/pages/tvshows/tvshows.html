@@ -14,20 +14,35 @@
     </ion-header>
 
 
-    <ion-content>
+    <ion-content class="main-div">
         <div class="slide-div airing-today">
             <p class="airing-today-title">Airing Today</p>
             <ion-slides #imgSlides loop="true" class="image-slider" slidesPerView='2'>
                 <ion-slide class="sliding-img" *ngFor="let img of seriesArr">
                     <ion-card (click)="navToShow(img)">
-                        <img [src]="imgConfigPath+img.poster_path" />
+                        <div class="icon-div">
+                            <ion-icon name="bookmark" class="icon-bm"></ion-icon>
+                            <img [src]="imgConfigPath+img.poster_path" />
+                        </div>
                     </ion-card>
                 </ion-slide>
             </ion-slides>
         </div>
 
         <div class="popular-div">
-            <p class="popular-shows-title">- Popular Shows</p>
+            <ion-grid class="tv-grid">
+                <ion-row>
+                    <ion-col col-8 class="tv-grid">
+                        <p class="popular-shows-title">Popular Shows</p>
+                    </ion-col>
+                    <ion-col>
+                        <ion-buttons end class="btn-end">
+                            <button ion-button small (click)="navToPopularTv()" color="primary" outline>more</button>
+                        </ion-buttons>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
             <ion-slides slidesPerView='3'>
                 <ion-slide *ngFor="let img of popularShowsArr">
                     <ion-card (click)="navToShow(img)" class="populer-card">
@@ -38,7 +53,19 @@
         </div>
 
         <div class="toprated-div">
-            <p class="toprated-shows-title">- Top Rated</p>
+            <ion-grid class="tv-grid">
+                <ion-row>
+                    <ion-col col-8 class="tv-grid">
+                        <p class="toprated-shows-title">Top Rated</p>
+                    </ion-col>
+                    <ion-col>
+                        <ion-buttons end class="btn-end">
+                            <button ion-button small class="" color="primary" outline>more</button>
+                        </ion-buttons>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
             <ion-slides slidesPerView='3'>
                 <ion-slide *ngFor="let img of topRatedArr">
                     <ion-card (click)="navToShow(img)" class="populer-card">
@@ -52,20 +79,15 @@
 
     <ion-footer>
         <ion-toolbar color="dark">
-                    <ion-item *ngFor="let details of searchResults" (click)="navToShow(details)">
-                        <div item-start>
-                            <img [src]="imgConfigPath+details.poster_path">
-                        </div>
-                        <h2>{{details.name}}</h2>
-                        <!-- <p>{{ddetails.overview}}</p> -->
-                    </ion-item>
-            <ion-searchbar 
-                [(ngModel)]="searchInput"
-                (ionCancel)="onCancel($event)"
-                (ionInput)="filterItems($event)"
-                (ionClear)="onClear($event)"
-                [showCancelButton]="false"
-                showCancelButton='true' animated="true" placeholder="Search"></ion-searchbar>
+            <!-- <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 100%"> -->
+            <ion-item *ngFor="let details of searchResults" (click)="navToShow(details)">
+                <div class="search-div" item-start>
+                    <img [src]="imgConfigPath+details.poster_path">
+                </div>
+                <p>{{details.overview}}</p>
+            </ion-item>
+            <!-- </ion-scroll> -->
+            <ion-searchbar [(ngModel)]="searchInput" (ionCancel)="onCancel($event)" (ionInput)="filterItems($event)" (ionClear)="onClear($event)" [showCancelButton]="false" showCancelButton='true' animated="true" placeholder="Search"></ion-searchbar>
         </ion-toolbar>
     </ion-footer>
 

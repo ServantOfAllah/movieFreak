@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { OnTheAirPage } from '../pages/on-the-air/on-the-air';
 import { PopularShowPage } from '../pages/popular-show/popular-show';
 import { TopRatedShowPage } from '../pages/top-rated-show/top-rated-show';
+import {TruncatePipe} from '../pipes/truncate/truncate';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     OnTheAirPage,
     PopularShowPage,
+    TruncatePipe,
     TopRatedShowPage
   ],
   imports: [

@@ -1,13 +1,44 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Popular</ion-title>
-  </ion-navbar>
+        <ion-title>Popular</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content>
+    <ion-card *ngFor="let details of popularShowsArr">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <img class="poster-img" [src]="baseImgUrlArr + details.poster_path" />
+                    <div class="fav-div">
+                        <p class="save-p">SAVE</p>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <h2 class="title">{{details.name}}</h2>
+                    <ion-row>
+                        <ion-col>
+                            <!-- <p class="overview">{{(details.overview)?.substring(0,80)}}...</p> -->
+                            <p class="premiere">PREMIERE: {{details.first_air_date}}</p>
+                            <p class="country">COUNTRY: {{details.origin_country}}</p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div class="div-rating-big">
+                                <div class="div-rating">
+                                    <h2 class="rating">{{details.vote_average}}</h2>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
 
 </ion-content>

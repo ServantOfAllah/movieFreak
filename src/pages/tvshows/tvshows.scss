@@ -1,59 +1,63 @@
 page-tvshows {
-
     .sliding-img {
         top: 0;
         left: -25%;
     }
-    .image-slider{
+    .image-slider {
         display: block;
         width: 100%;
-        height: 100%; 
+        height: 100%;
         padding: 0 0 20px 0;
     }
-
+    .search-div {
+        width: 2600px;
+        height: 1400px;
+    }
     .slide-zoom {
         width: auto;
     }
     .swiper-slide img {
         width: 100%;
     }
-    .slide-div{
+    .slide-div {
         background-color: #202020;
     }
-    .popular-div{
+    .main-div {
         background-color: #363636;
     }
-    
-    .toprated-div{
-        background-color: #363636;
-        margin-top: 0.3px;
+    .popular-div {
+        margin: 10px 0;
+        padding-bottom: 25px;
+        background-color: #616161;
     }
-    .airing-today-title{
+    .toprated-div {
+        background-color: #616161;
+    }
+    .airing-today-title {
         color: #fff;
         margin: 0;
         padding: 15px 0 10px 25px;
-        font-size: 1em;
+        font-size: 1.2em;
         text-transform: uppercase;
     }
-    .toprated-shows-title{
+    .toprated-shows-title {
         color: #fff;
         margin: 0;
-        padding: 20px 0 0px 15px;
-        font-size: 1em;
+        padding: 25px 0 10px 20px;
+        font-size: 1.2em;
         text-transform: uppercase;
         // text-align: center;
         font-weight: 400;
     }
-    .popular-shows-title{
+    .popular-shows-title {
         color: #FFFFFF;
         margin: 0;
-        padding: 25px 0 0px 15px;
-        font-size: 1em;
+        padding: 25px 0 10px 20px;
+        font-size: 1.2em;
         text-transform: uppercase;
         // text-align: center;
         font-weight: 400;
     }
-    
     .populer-card {
         width: calc(100% - 10px);
     }
@@ -64,11 +68,37 @@ page-tvshows {
     .card-content {
         padding: 0;
     }
-    .movie-rate{
+    .movie-rate {
         padding-top: 10px;
         color: #FFC547;
         font-weight: bold;
         font-size: 2em;
     }
-
+    .tv-grid {
+        padding: 0px;
+    }
+    .btn-end {
+        padding-top: 10px;
+    }
+    .button-inner {
+        color: #fff;
+    }
+    .icon-bm {
+        color: #f53d3d;
+        font-size: 4em;
+        position: absolute;
+        top: 0px;
+        margin: 0;
+        padding: 0;
+        right: 0px;
+    }
+    .icon-div {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    span {
+        margin: 0;
+        padding: 0;
+    }
 }

@@ -1,3 +1,45 @@
 page-popular-show {
-
+    .col,
+    .grid {
+        padding: 0;
+    }
+    .poster-img {
+        padding-right: 8px;
+    }
+    .title {
+        font-weight: 500;
+        padding: 5px 5px 10px 0;
+    }
+    .premiere,
+    .country {
+        font-size: 1.3rem !important;
+        padding-bottom: 8px
+    }
+    .div-rating {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        //border: solid 1px #000000;
+        text-align: center;
+        padding-top: 12px;
+        background-color: #ee6e73;
+        position: relative;
+        left: -25%;
+        bottom: 0;
+        box-shadow: 2px 2px 5px #888888;
+    }
+    .rating {
+        color: #ffffff;
+        font-weight: 500;
+    }
+    .fav-div {
+        height: 30px;
+        background-color: #ee6e73;
+        margin-right: 8px;
+        text-align: center;
+        padding-top: 7px;
+    }
+    .save-p {
+        color: #fff;
+    }
 }

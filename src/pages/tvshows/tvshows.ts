@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { HttpModule, Http } from '@angular/http';
+import { PopularShowPage } from '../../pages/popular-show/popular-show';
 import 'rxjs/add/operator/map';
 
 @IonicPage()
@@ -82,7 +83,7 @@ export class TvshowsPage {
     this.http.get(this.baseImgUrlConfig+this.apiKey).map(res =>res.json()).subscribe(data => {
       this.firstImgPath = data.images.base_url;
       this.allImgSizes = data.images
-      const imgSize = data.images.logo_sizes[1];
+      const imgSize = data.images.poster_sizes[2];
       console.log(data);
       console.log(this.firstImgPath);
       console.log(imgSize);
@@ -95,6 +96,9 @@ export class TvshowsPage {
   navToShow(details){
     const tvdetails = this.navCtrl.push('TvpagePage', { tvDetails: details, firstImgPath: this.firstImgPath, allSizes: this.allImgSizes })
     console.log(tvdetails);
+  }
+  navToPopularTv(){
+    this.navCtrl.push(PopularShowPage);
   }
 
   searchItems($event){
